@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Data
 @Entity
@@ -20,7 +21,7 @@ public class SysSetting {
     private Long id;
 
     //站点名称
-    private String SiteTitle;
+    private String siteTitle;
 
     //站点logo
     private String logo;
@@ -32,14 +33,18 @@ public class SysSetting {
     private String email;
 
     //是否关闭站点
-    private boolean isCloseSite;
+    private boolean iscloseSite;
 
     //微信二维码
     private String wechatImg;
 
     //站点描述
-    private String SiteDescription;
+    private String siteDescription;
 
+    //创建时间
+    private Date createTime;
 
+    //最后的修改时间
+    private Date updateTime;
 
 }

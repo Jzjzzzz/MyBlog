@@ -3,6 +3,7 @@ package com.jzj.blog.web;
 import com.jzj.blog.NotFoundException;
 import com.jzj.blog.po.Blog;
 import com.jzj.blog.service.BlogService;
+import com.jzj.blog.service.SettingService;
 import com.jzj.blog.service.TagService;
 import com.jzj.blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class IndexController {
     private TypeService typeService;
     @Autowired
     private TagService tagService;
+    @Autowired
+    private SettingService settingService;
 
     @GetMapping("/")
     public String index(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,Model model){
@@ -50,6 +53,7 @@ public class IndexController {
     @GetMapping("/footer/newblog")
     public String newblogs(Model model){
         model.addAttribute("newblogs",blogService.listRecommendBlogTop(3));
+        model.addAttribute("setting",settingService.getSetting());
         return "_fragments :: newblogList";
     }
 
